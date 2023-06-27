@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<style>
+    body{
+        background-color: brown(216, 216, 216);
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 20px;
+    }
+    .container {
+        width: 35%;
+        margin: 5% auto 0 auto;
+        background-color: rgb(70, 63, 70);
+        padding-top: 30px;
+        padding-bottom: 30px;
+        color: rgb(29, 208, 37);
+        border-radius: 30px 30px 0 0;
+
+    }
+    #navigasi {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    h3 {
+        color: white;
+
+    }
+
+    hr {
+        border-color: rgb(95, 95, 95);
+    }
+    .hasil {
+        width: 25%;
+        margin: 10px auto 0 auto;
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(14, 186, 216);
+        color: rgb(14, 1, 1);
+        border-radius: 0 0 30px 30px;
+    } 
+    #hasil {
+        padding: 10px 20px 50px 20px;
+        font-size: 12px;
+    }
+    .lingkaran:hover {
+        background-color: rgb(198, 19, 19);
+        transition: .5s;
+    }
+
+    .jajargenjang:hover {
+        background-color: rgb(68, 19, 192);
+        transition: .5s;
+    }
+</style>
+<body class="bg-success">
+    <div class="container-fluid m-0 p-0">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light px-5">
+            <a class="navbar-brand" href="#">GMW</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Dashboard.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Rumus.php">Rumus</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="example.html">Let's Try!</a>
+                    </li>
+                    </ul>
+                </div>
+            </nav>
+
+    </div>
+    <div class="container">
+        <div id="navigasi">
+             <h3>Mencari Luas&Keliling</h3>
+             <button type="button" class="lingkaran">Hitung Keliling Lingkaran</button>
+             <button type="button" class="jajargenjang">Hitung Luas Jajar Genjang</button>
+        </div>
+
+        <hr>
+        <div id="hitungkelilinglingkaran">
+            <br>
+            <center>
+                <table>
+                    <tr>
+                        <td><label for="diameter">diameter</label></td>
+                        <td>&nbsp;&nbsp;: <input type="number" class="diameter" required></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="Llingkaran">Hitung Keliling</button></td>
+                    </tr>
+                </table>
+            </center>
+
+        </div>
+
+        <div id="hitungluasjajargenjang">
+            <br>
+            <center>
+                <table>
+                    <tr>
+                        <td><label for="alas">Alas</label></td>
+                        <td>&nbsp;&nbsp;: <input type="number" class="alas" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="tinggi">Tinggi</label></td>
+                        <td>&nbsp;&nbsp;: <input type="number" class="tinggi" required></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="ljajargenjang">Hitung Luas</button></td>
+                    </tr>
+                </table>
+            </center>
+        </div>
+    </div>
+    <div class="hasil">
+        <div id="hasil">Hasilnya</div>
+    </div>
+    <script>
+        $(function(){
+            $("#hasil").hide();
+            $("#hitungkelilinglingkaran").hide();
+
+            let judul = "Klik Tombol";
+
+            $("h3").html("Luas Bangun Datar");
+
+            $(".lingkaran").click(function(){
+                $("#hitungluasjajargenjang").hide(500);
+                $("#hitungkelilinglingkaran").show(500);
+                judul = "Keliling Lingkaran";
+                $("h3").html(judul);
+            });
+
+            $(".jajargenjang").click(function() {
+                $("#hitungkelilinglingkaran").hide(500);
+                $("#hitungluasjajargenjang").show(500);
+                judul = "Luas Jajar Genjang";
+                $("h3").html(judul);
+            });
+
+        <!-- Menghitung Keliling LIngkaran -->
+            $(".Llingkaran").click(function(){
+                let p = 3.14;
+                let l = $(".diameter").val();
+                let lp = p*l;
+                let tx = "<center><h4>HASIL</h4></center>Luas Persegi dengan nilai : <br>";
+                tx += "π = "+p+"cm<br>Lebar&nbsp;&nbsp;&nbsp; = "+l+"cm <br>";
+                tx += "Luas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = π X Diameter<br>";
+                tx += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = "+p+" X "+l+"<br>";
+                tx += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = "+lp+"<br>Jadi, Keliling dari lingkaran tersebut adalah "+lp+"cm";
+
+                $("#hasil").html(tx);
+                $("#hasil").show(500);
+            });
+
+            $(".ljajargenjang").click(function() {
+                let a = $(".alas").val();
+                let t = $(".tinggi").val();
+                let ls = a*t;
+                let tx = "<center><h4>HASIL</h4></center>Luas Jajar Genjang dengan nilai : <br>";
+                tx += "Alas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = "+a+"cm<br>Tinggi&nbsp;&nbsp;&nbsp; = "+t+"cm <br>";
+                tx += "Luas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = Alas X Tinggi<br>";
+                tx += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = "+a+" X "+t+"<br>";
+                tx += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = "+ls+"<br>Jadi, Luas dari Jajar Genjang tersebut adalah "+ls+"cm";
+
+                $("#hasil").html(tx);
+                $("#hasil").show(500);
+            });
+        });
+    </script>
+</body>
+
+</html>
