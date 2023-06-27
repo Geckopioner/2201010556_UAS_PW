@@ -1,0 +1,5 @@
+Deskripsi Project:
+
+Web ini bertujuan untuk edukasi tentang bangun ruang dan datar.
+Menggunakan JQuery sebagai inti dari project ini.
+Mengetahui macam-macam tentang Luas dan Keliling.
